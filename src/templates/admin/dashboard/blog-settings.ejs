@@ -5,6 +5,7 @@
                 title: '',
                 description: '',
                 subdomain: '',
+                avatarurl: '',
                 timezone: 'UTC',
                 dateformat: 'MM/DD/YYYY',
                 sitefooter: '',
@@ -23,10 +24,10 @@
                             'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
                         }
                       }).then(response => response.json()).then(data => {
-                        console.log(data);
                         this.title = data.title || '';
                         this.description = data.description || '';
                         this.subdomain = data.subDomain || '';
+                        this.avatarurl = data.avatarUrl || '';
                         this.timezone = data.timeZone || 'UTC';
                         this.dateformat = data.dateFormat || 'MM/DD/YYYY';
                         this.sitefooter = data.siteFooter || '';
@@ -40,10 +41,26 @@
                       });
                 },
 
-                submitForm() {
+                async submitForm() {
                     if (this.title === '' || this.subdomain === '') {
                         this.errorMessage = 'Title is required.';
                         return;
+                    }
+
+                    const avatarInput = document.getElementById('avatarurl');
+                    if (avatarInput.files.length > 0) {
+                      const formData = new FormData();
+                      formData.append('file', avatarInput.files[0]);
+
+                      const response = await fetch('/api/blogs/<%= blogId %>/avatar/upload', {
+                        method: 'POST',
+                        headers: {
+                          'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                        },
+                        body: formData
+                      });
+                      const responseData = await response.json();
+                      this.avatarurl = responseData.avatarUrl;
                     }
 
                     fetch(`/api/blogs/<%= blogId %>`, {
@@ -93,6 +110,19 @@
           <div>
             <label for="description">Blog Description</label>
             <textarea id="description" name="description" x-model="description"></textarea>
+          </div>
+
+          <div>
+            <label for="avatarurl">Avatar URL</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="current-avatar" x-show="avatarurl">
+                  <img :src="'/static/avatars/' + avatarurl" alt="Current Avatar" class="current-avatar-image" />
+              </div>
+              <div>
+                <input type="file" id="avatarurl" name="avatarurl" />
+                <span>Note: Uploading a new avatar will replace the existing one.</span>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -174,11 +204,7 @@
               <input type="checkbox" id="usecustomcss" name="usecustomcss" x-model="usecustomcss" />
               Use Custom CSS
             </label>
-          </div>
-
-          <div>
-            <label for="customcss">Custom CSS</label>
-            <textarea id="customcss" name="customcss"></textarea>
+            <textarea id="customcss" name="customcss" rows="8"></textarea>
           </div>
 
           <div>

@@ -4,7 +4,7 @@
         document.addEventListener('alpine:init', () => {
             Alpine.data('dashboardPage', () => ({
                 username: '',
-                currentTab: 'settings',
+                currentTab: 'posts',
 
                 init() {
 
@@ -21,21 +21,23 @@
         });
     </script>
 
-    <main class="admin-dashboard-page" x-data="dashboardPage" x-init="init()">
-      <h2>Admin Dashboard</h2>
-      <div class="dashboard-content">
-          <p>Welcome, <%= username %>!
-            <div class="logout-section">
-              <button @click="logout">Logout</button>
-            </div>
-          </p>
+    <div x-data="dashboardPage" x-init="init()">
+      <header>
+        <div id="admin-welcome-message">
+          Welcome <%= username %>! See your blog <a href="/"" target="_blank">here</a>.
+        </div>
+        <h1>Pipa Blog Engine - Admin Panel</h1>
+        <nav>
           <ul>
-              <li><a x-href="javascript://" @click="setTab('posts')">Manage Posts</a></li>
-              <li><a x-href="javascript://" @click="setTab('pages')">Manage Pages</a></li>
-              <li><a x-href="javascript://" @click="setTab('settings')">Site Settings</a></li>
+            <li><a x-href="javascript://" @click="setTab('posts')">Posts</a></li>
+            <li><a x-href="javascript://" @click="setTab('pages')">Pages</a></li>
+            <li><a x-href="javascript://" @click="setTab('settings')">Settings</a></li>
+            <li><a x-href="javascript://" @click="logout()">Logout</a></li>
           </ul>
+      </header>
 
-          <div id="manage-settings-section" x-show="currentTab === 'settings'">
+      <main id="admin-dashboard-main-content">
+        <div id="manage-settings-section" x-show="currentTab === 'settings'">
             <%- include('./dashboard/blog-settings', { blogId }) %>
           </div>
 
@@ -46,8 +48,7 @@
           <div id="manage-pages-section" x-show="currentTab === 'pages'">
             <%- include('./dashboard/manage-pages', { blogId }) %>
           </div>
-
-      </div>
-    </main>
+      </main>
+    </div>
 
  <%- include('./partials/footer') %>

@@ -1,5 +1,4 @@
 import dotenv from 'dotenv'
-import path from 'node:path'
 import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
 import { Hono } from 'hono'
@@ -12,6 +11,7 @@ import RootController from './controllers/RootController.js'
 import AuthController from './controllers/AuthController.js'
 import RegisterController from './controllers/RegisterController.js'
 import BlogController from './controllers/BlogController.js'
+import UploadController from './controllers/UploadController.js'
 import PostController from './controllers/PostController.js'
 import PageController from './controllers/PageController.js'
 import NavigationController from './controllers/NavigationController.js'
@@ -48,6 +48,7 @@ RootController.init(app)
 AuthController.init(app)
 RegisterController.init(app)
 BlogController.init(app)
+UploadController.init(app)
 PostController.init(app)
 PageController.init(app)
 NavigationController.init(app)

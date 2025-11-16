@@ -92,17 +92,19 @@ class PostController {
     const { blogId, postId } = c.req.param();
     const updates = c.req.valid('json');
 
+
+    const post = await Post.findByPk(postId);
+    if (!post) {
+      return c.json({ error: 'Post not found' }, 404);
+    }
+
+    if (post.blogId.toString() !== blogId) {
+      return c.json({ error: 'Post does not belong to the specified blog' }, 400);
+    }
+
+    const status = updates.published ? 'published' : 'draft';
     try {
-      const post = await Post.findByPk(postId);
-      if (!post) {
-        return c.json({ error: 'Post not found' }, 404);
-      }
-
-      if (post.blogId.toString() !== blogId) {
-        return c.json({ error: 'Post does not belong to the specified blog' }, 400);
-      }
-
-      await post.update(updates);
+      await post.update({ ...updates, status });
       return c.json({ message: 'Post updated successfully' }, 200);
     } catch (error) {
       return c.json({

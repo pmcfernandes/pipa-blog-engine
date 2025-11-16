@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import { sign} from 'hono/jwt'
+import { sign } from 'hono/jwt'
 import { setCookie } from 'hono/cookie'
 import { renderTemplate } from '../helpers/template.js'
 import { User } from '../helpers/models.js'
@@ -10,6 +10,7 @@ const { HASH_SECRET } = process.env
 
 class LoginPage {
   static init(app) {
+    app.get('/admin/', this.loginHandler);
     app.get('/admin/login', this.loginHandler);
     app.post('/admin/login', this.loginHandler);
   }

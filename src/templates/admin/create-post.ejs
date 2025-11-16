@@ -13,7 +13,13 @@
               },
 
               initQuill() {
-                  this.quill = new Quill(this.$refs.quillEditor, { theme: 'snow' });
+                  this.quill = new Quill(this.$refs.quillEditor, {
+                    placeholder: 'Compose an epic...',
+                    theme: 'snow',
+                    modules: {
+                      toolbar: '#toolbar',
+                    }
+                   });
                   this.quill.on('text-change', () => {
                     this.content = this.quill.root.innerHTML;
                   });
@@ -44,41 +50,54 @@
                     });
               },
 
-              backToDashboard() {
-                  window.location.href = '/admin/dashboard';
-              }
-
           }))
       });
     </script>
 
-    <div class="admin-create-post-page" x-data="createPostForm" x-init="init()" >
-
-      <button x-on:click="backToDashboard" class="back-to-dashboard-button">
-        <i class="lni lni-arrow-left"></i> Back to Dashboard
-      </button>
-
-      <h2>Create New Blog Post</h2>
-
-      <form action="/api/blogs/<%= blogId %>/posts" method="POST" @submit.prevent="submitForm">
-          <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
-            <%= errorMessage %>
-          </div>
-
-          <div>
-              <label for="title">Title:</label>
-              <input type="text" id="title" name="title" x-model="title" />
-          </div>
-          <div>
-              <label for="content">Content:</label>
-              <textarea id="content" name="content" x-model="content" hidden></textarea>
-              <div id="editor" x-ref="quillEditor" x-init="initQuill()"></div>
-          </div>
-          <div>
-              <button type="submit">Create Post</button>
-          </div>
-      </form>
-
+   <div class="admin-edit-page" x-data="createPostForm" x-init="init()">
+    <div class="admin-edit-page-header">
+      <div class="admin-edit-page-header-left">
+        <a href="/admin/dashboard" class="admin-back-link">Back to Dashboard</a>
+      </div>
+      <div class="admin-edit-page-header-right">
+        <button form="edit-post-form" type="submit" class="admin-save-button">Save Changes</button>
+      </div>
     </div>
+
+    <div id="toolbar">
+      <span class="ql-formats">
+        <button class="ql-bold"></button>
+        <button class="ql-italic"></button>
+        <button class="ql-underline"></button>
+        <button class="ql-strike"></button>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-list" value="ordered"></button>
+        <button class="ql-list" value="bullet"></button>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-link"></button>
+      </span>
+    </div>
+
+    <div class="admin-edit-page-content">
+      <form id="edit-post-form" action="/api/blogs/<%= blogId %>/posts" method="POST" @submit.prevent="submitForm">
+        <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+          <%= errorMessage %>
+        </div>
+
+        <div>
+            <label for="title" hidden>Title:</label>
+            <textarea id="title" name="title" x-model="title" rows="1"  placeholder="Title"></textarea>
+        </div>
+
+        <div>
+          <label for="content" hidden>Content</label>
+          <textarea id="content" name="content" x-model="content" hidden></textarea>
+          <div id="editor" x-ref="quillEditor" x-init="initQuill()"></div>
+        </div>
+      </form>
+    </div>
+  </div>
 
 <%- include('./partials/footer') %>

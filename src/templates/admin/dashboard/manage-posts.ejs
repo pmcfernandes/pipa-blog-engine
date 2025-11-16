@@ -12,7 +12,7 @@
                     'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
                 }
             }).then(response => response.json()).then(data => {
-                this.posts = data.posts || [];
+                this.posts = (data.posts || []).filter(post => post.status !== 'archived');
             }).catch(error => {
                 this.errorMessage = 'An error occurred while fetching posts.';
             });
@@ -44,8 +44,8 @@
         <%= errorMessage %>
       </div>
 
-      <div class="create-post-button">
-          <a :href="'/admin/blog/<%= blogId %>/create-post'">Create New Post</a>
+      <div class="create-button">
+          <a :href="'/admin/blog/<%= blogId %>/create-post'"><i class="lni lni-file-pencil"></i> Create New Post</a>
       </div>
 
       <div class="posts-list">

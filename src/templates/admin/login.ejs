@@ -8,13 +8,13 @@
                 password: '',
                 errorMessage: '<%= errorMessage %>',
 
-                submitForm($el) {
+                submitForm($ev) {
                     if (this.username === '' || this.password === '') {
                         this.errorMessage = 'Username and Password are required.';
                         return;
                     }
 
-                    $el.target.submit();
+                    $ev.target.submit();
                 }
 
               }))
@@ -23,8 +23,10 @@
     </script>
 
     <main class="admin-login-page" x-data="loginForm">
-      <img src="/static/images/pipas-1.png" alt="Logo" class="admin-login-logo" />
-      <h2>Login</h2>
+      <div>
+        <img src="/static/images/pipas-1.png" alt="Logo" class="admin-login-logo" />
+        <h2>Login Blog Engine</h2>
+      </div>
 
       <form action="/admin/login" method="POST" @submit.prevent="submitForm">
           <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">

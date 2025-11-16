@@ -1,9 +1,13 @@
-        <hr size="2">
+        <% if (footerText) { %>
+          <hr size="2">
+        <% } %>
       </main>
 
+      <% if (footerText) { %>
       <footer>
           <%= footerText %>
       </footer>
+      <% } %>
     </div>
 </body>
 </html>

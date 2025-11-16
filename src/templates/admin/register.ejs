@@ -47,8 +47,11 @@
     </script>
 
     <div class="admin-register-page" x-data="registerForm" x-init="init()" >
-        <img src="/static/images/pipas-1.png" alt="Logo" class="admin-login-logo" />
-        <h2>Register</h2>
+        <div>
+          <img src="/static/images/pipas-1.png" alt="Logo" class="admin-login-logo" />
+          <h2>Register User</h2>
+          <p>Create a account for get a free subdomain blog account</p>
+        </div>
 
         <form action="/api/register" method="POST" @submit.prevent="submitForm">
             <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">

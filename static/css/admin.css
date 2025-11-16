@@ -1,3 +1,129 @@
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZzmx8OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZTm18OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZkG18OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZzm18OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZ_G18OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZEGp8OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZKWp8OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZTmp8OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uUsoS_Lf9xv7Su1Fp4AS5XiXCAlXGks1WZZ2p8OA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpp3bJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jph3aJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpsPaJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpp3aJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpq_aJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpkPdJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpnrdJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jph3dJi4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Elms Sans';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmssans/v5/q5uWsoS_Lf9xv7Su1FpSCByoURnrD9-jpjTdJi4.ttf) format('truetype');
+}
 :root {
   --main-text-color: #333333;
   --background-color: #f9f9f9;
@@ -6,344 +132,290 @@
   --button-text-color: #ffffff;
   --button-hover-background-color: #45a049;
 }
-a {
+body {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: var(--background-color);
+  color: var(--main-text-color);
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: var(--background-color);
+  color: var(--main-text-color);
+  padding: 10px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--main-text-color);
+}
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+header nav {
+  margin-top: 10px;
+}
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+header nav a {
+  margin: 0 10px;
+  color: var(--link-color);
+  text-decoration: none;
+}
+header nav a:hover {
+  text-decoration: underline;
+}
+main {
+  margin-top: 20px;
+}
+footer {
+  background-color: var(--background-color);
+  color: var(--main-text-color);
+  text-align: center;
+  padding: 10px 20px;
+  border-top: 1px solid var(--main-text-color);
+  margin-top: 20px;
+}
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="file"],
+textarea,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid var(--main-text-color);
+}
+input[type="text"] + span,
+input[type="password"] + span,
+input[type="email"] + span,
+input[type="date"] + span,
+input[type="file"] + span,
+textarea + span,
+select + span {
+  font-size: 12px;
+  color: red;
+}
+button[type="submit"] {
+  cursor: pointer;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 10px 20px;
+}
+button[type="submit"]:hover {
+  background-color: var(--button-hover-background-color);
+}
+h1,
+h2,
+h3 {
+  color: var(--main-text-color);
+}
+p,
+label,
+ul > li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+p a,
+label a,
+ul > li a {
   cursor: pointer !important;
+  color: var(--link-color);
+  text-decoration: underline;
+}
+p a:hover,
+label a:hover,
+ul > li a:hover {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+ul li {
+  margin-bottom: 10px;
+}
+#wrapper {
+  padding: 20px;
 }
 .admin-login-logo {
   max-width: 300px;
   margin: 0 auto 20px auto;
   display: block;
 }
-.admin-login-page {
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 5px;
-  background-color: var(--background-color);
+#admin-welcome-message {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
 }
-.admin-login-page h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.admin-login-page label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.admin-login-page input[type="text"],
-.admin-login-page input[type="password"] {
-  width: 94%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 3px;
-  font-size: 16px;
-  background-color: var(--input-background-color);
-  color: var(--main-text-color);
-}
-.admin-login-page button {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.admin-login-page button:hover {
-  background-color: var(--button-hover-background-color);
-}
-.admin-error-message {
-  color: red;
-  margin-bottom: 15px;
-  text-align: center;
-}
-.admin-register-link,
-.admin-login-link {
-  display: block;
-  margin-top: 15px;
-  text-align: center;
-}
-.admin-register-link a,
-.admin-login-link a {
-  color: var(--link-color);
-  text-decoration: underline;
-}
+#admin-dashboard-main-content,
+.admin-login-page,
 .admin-register-page {
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 5px;
-  background-color: var(--background-color);
-}
-.admin-register-page h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.admin-register-page label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.admin-register-page input[type="text"],
-.admin-register-page input[type="password"],
-.admin-register-page input[type="email"] {
-  width: 94%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 3px;
-  font-size: 16px;
-  background-color: var(--input-background-color);
-  color: var(--main-text-color);
-}
-.admin-register-page button {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.admin-register-page button:hover {
-  background-color: var(--button-hover-background-color);
-}
-.admin-dashboard-page {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: var(--background-color);
-  border: 1px solid var(--main-text-color);
-  border-radius: 5px;
-}
-.admin-dashboard-page h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.admin-dashboard-page .admin-stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-}
-.admin-dashboard-page .admin-stats .stat {
-  text-align: center;
-}
-.admin-dashboard-page .admin-stats .stat .number {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-.admin-dashboard-page .admin-stats .stat .label {
-  font-size: 1em;
-  color: var(--main-text-color);
-}
-.admin-dashboard-page .admin-actions {
-  display: flex;
-  justify-content: space-around;
-}
-.admin-dashboard-page .admin-actions button {
-  padding: 10px 20px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.admin-dashboard-page .admin-actions button:hover {
-  background-color: var(--button-hover-background-color);
-}
-.dashboard-content {
   margin-top: 20px;
 }
-.dashboard-content ul {
-  list-style-type: none;
+#admin-dashboard-main-content div,
+.admin-login-page div,
+.admin-register-page div {
+  margin-bottom: 20px;
+  max-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#admin-dashboard-main-content div h2,
+.admin-login-page div h2,
+.admin-register-page div h2 {
+  margin-top: 0;
+  text-align: center;
+}
+.current-avatar {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.current-avatar > .current-avatar-image {
+  max-width: 80px !important;
+  height: auto;
+  border-radius: 8px;
+}
+.current-avatar + div {
+  margin-right: 20px;
+}
+.current-avatar + div input[type="file"] {
+  border: none;
   padding: 0;
 }
-.dashboard-content ul li {
-  padding: 5px 0px;
-}
-.dashboard-content ul li a {
-  color: var(--link-color);
-  text-decoration: underline;
-}
-.admin-create-blog-page {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: var(--background-color);
-  border: 1px solid var(--main-text-color);
-  border-radius: 5px;
-}
-.admin-create-blog-page h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.admin-create-blog-page label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.admin-create-blog-page input[type="text"],
-.admin-create-blog-page textarea {
-  width: 94%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 3px;
-  font-size: 16px;
-  background-color: var(--input-background-color);
-  color: var(--main-text-color);
-}
-.admin-create-blog-page button {
+.admin-edit-page {
   width: 100%;
-  padding: 10px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
+}
+.admin-edit-page .admin-edit-page-header {
+  display: flow-root;
+  margin-bottom: 20px !important;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-left {
+  float: left;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right {
+  float: right;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .admin-save-button {
+  border-radius: 20px;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu {
+  position: relative;
+  display: inline-block;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu .menu-button {
+  background-color: var(--background-color);
+  border: solid 1px #000;
+  color: #000;
+  padding: 8px 11px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu .menu-button:hover {
+  background-color: #c1c1c1;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu .menu-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 220px;
+  background-color: var(--background-color);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu .menu-content a {
+  color: var(--main-text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
   cursor: pointer;
 }
-.admin-create-blog-page button:hover {
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu .menu-content a.red-text {
+  color: red;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu .menu-content a:hover {
+  background-color: #f1f1f1;
+}
+.admin-edit-page .admin-edit-page-header .admin-edit-page-header-right .menu:hover .menu-content {
+  display: block;
+}
+.admin-edit-page .admin-edit-page-content {
+  margin-top: 20px;
+  max-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.admin-edit-page .admin-edit-page-content input[type="text"],
+.admin-edit-page .admin-edit-page-content input[type="date"],
+.admin-edit-page .admin-edit-page-content textarea {
+  width: 100%;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  background-color: var(--background-color);
+}
+.admin-edit-page .admin-edit-page-content input[type="text"]:focus,
+.admin-edit-page .admin-edit-page-content input[type="date"]:focus,
+.admin-edit-page .admin-edit-page-content textarea:focus {
+  outline: none;
+}
+.admin-edit-page .admin-edit-page-content #editor {
+  border: none;
+  min-height: 800px;
+  background-color: var(--background-color);
+}
+.admin-edit-page .admin-edit-page-content #editor .ql-editor {
+  padding: 10px;
+}
+.admin-login-page,
+.admin-register-page {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.create-button {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+  border-radius: 20px;
+}
+.create-button:hover {
   background-color: var(--button-hover-background-color);
 }
-.create-page-button,
-.create-post-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-.create-page-button a,
-.create-post-button a {
+.create-button a {
   color: var(--button-text-color);
   text-decoration: none;
   justify-content: center;
   display: flex;
 }
-.create-page-button:hover,
-.create-post-button:hover {
-  background-color: var(--button-hover-background-color);
+.lni {
+  margin-top: 2px;
+  margin-right: 8px;
 }
-.admin-create-post-page,
-.admin-create-page-form,
-.admin-edit-post-page,
-.admin-edit-page {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: var(--background-color);
-  border: 1px solid var(--main-text-color);
-  border-radius: 5px;
+.admin-back-link {
+  color: var(--link-color);
+  text-decoration: underline;
+  font-size: 14px;
 }
-.admin-create-post-page h1,
-.admin-create-page-form h1,
-.admin-edit-post-page h1,
-.admin-edit-page h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.admin-create-post-page label,
-.admin-create-page-form label,
-.admin-edit-post-page label,
-.admin-edit-page label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.admin-create-post-page input[type="text"],
-.admin-create-page-form input[type="text"],
-.admin-edit-post-page input[type="text"],
-.admin-edit-page input[type="text"],
-.admin-create-post-page textarea,
-.admin-create-page-form textarea,
-.admin-edit-post-page textarea,
-.admin-edit-page textarea {
-  width: 94%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 3px;
-  font-size: 16px;
-  background-color: var(--input-background-color);
-  color: var(--main-text-color);
-}
-.admin-create-post-page button,
-.admin-create-page-form button,
-.admin-edit-post-page button,
-.admin-edit-page button {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.admin-create-post-page button:hover,
-.admin-create-page-form button:hover,
-.admin-edit-post-page button:hover,
-.admin-edit-page button:hover {
-  background-color: var(--button-hover-background-color);
-}
-.admin-settings-page {
-  margin: 50px auto;
-  padding: 20px;
-  background-color: var(--background-color);
-}
-.admin-settings-page label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.admin-settings-page input[type="text"],
-.admin-settings-page input[type="email"],
-.admin-settings-page textarea {
-  width: 97%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 3px;
-  font-size: 16px;
-  background-color: var(--input-background-color);
-  color: var(--main-text-color);
-}
-.admin-settings-page select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-text-color);
-  border-radius: 3px;
-  font-size: 16px;
-  background-color: var(--input-background-color);
-  color: var(--main-text-color);
-}
-.admin-settings-page button {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: none;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.admin-settings-page button:hover {
-  background-color: var(--button-hover-background-color);
+.admin-back-link:hover {
+  text-decoration: none;
 }
