@@ -1,0 +1,72 @@
+<%- include('./partials/header') %>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('createBlogForm', () => ({
+        title: '',
+        description: '',
+        subdomain: '',
+        errorMessage: '<%= errorMessage %>',
+
+        init() {
+
+        },
+
+        submitForm($ev) {
+          if (this.title === '' || this.subdomain === '') {
+              this.errorMessage = 'All fields are required.';
+              return;
+          }
+
+          fetch($ev.target.getAttribute('action'), {
+              method: $ev.target.getAttribute('method'),
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+              },
+              body: JSON.stringify({
+                  title: this.title,
+                  description: this.description || '',
+                  subDomain: this.subdomain
+              })
+            }).then(response => response.json()).then(data => {
+              window.location.href = '/admin/dashboard';
+            }).catch(error => {
+              this.errorMessage = 'An error occurred. Please try again later.';
+            });
+        }
+
+      }));
+    });
+  </script>
+
+<div class="admin-create-blog-page" x-data="createBlogForm" x-init="init()" >
+    <h2>Create New Blog</h2>
+
+    <form action="/api/blogs" method="POST" @submit.prevent="submitForm">
+        <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+          <%= errorMessage %>
+        </div>
+
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" x-model="title" />
+        </div>
+
+        <div>
+          <label for="description">Description</label>
+          <textarea id="description" name="description" x-model="description"></textarea>
+        </div>
+
+        <div>
+          <label for="subdomain">Subdomain</label>
+          <input type="text" id="subdomain" name="subdomain" x-model="subdomain" />
+        </div>
+
+        <div>
+            <button type="submit">Create Blog</button>
+        </div>
+    </form>
+  </div>
+
+ <%- include('./partials/footer') %>

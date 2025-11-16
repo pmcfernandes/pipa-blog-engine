@@ -1,0 +1,64 @@
+  <script type="text/javascript">
+      document.addEventListener('alpine:init', () => {
+        Alpine.data('managePostsPage', () => ({
+          posts: [],
+          errorMessage: '',
+
+          init() {
+            fetch('/api/blogs/<%= blogId %>/posts', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                }
+            }).then(response => response.json()).then(data => {
+                this.posts = data.posts || [];
+            }).catch(error => {
+                this.errorMessage = 'An error occurred while fetching posts.';
+            });
+          },
+
+          deletePost(postId) {
+            if (!confirm('Are you sure you want to delete this post?'))
+              return;
+
+            fetch(`/api/blogs/<%= blogId %>/posts/${postId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': 'Bearer ' + getCookie('admin_jwt_token') }
+            }).then(() => {
+                this.posts = this.posts.filter(post => post.id !== postId);
+            }).catch(() => {
+                this.errorMessage = 'An error occurred while deleting the post.';
+            });
+          }
+
+        }));
+      });
+
+  </script>
+
+  <div class="admin-manage-posts-page" x-data="managePostsPage" x-init="init()">
+      <h2>Manage Posts</h2>
+
+      <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+        <%= errorMessage %>
+      </div>
+
+      <div class="create-post-button">
+          <a :href="'/admin/blog/<%= blogId %>/create-post'">Create New Post</a>
+      </div>
+
+      <div class="posts-list">
+        <div x-show="posts.length === 0">No posts available.</div>
+        <ul>
+          <template x-for="post in posts" :key="post.id">
+              <li>
+                  <a x-href="javascript://"  @click="deletePost(post.id)">Delete</a> |
+                  <a :href="'/admin/blog/<%= blogId %>/edit-post/' + post.id">Edit</a>
+                  <span x-text="new Date(post.createdAt).toDateString()"></span> - <span x-text="post.title"></span>
+              </li>
+          </template>
+        </ul>
+      </div>
+
+  </div>

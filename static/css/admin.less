@@ -1,0 +1,379 @@
+:root {
+  --main-text-color: #333333;
+  --background-color: #f9f9f9;
+  --input-background-color: #ffffff;
+  --button-background-color: #4CAF50;
+  --button-text-color: #ffffff;
+  --button-hover-background-color: #45a049;
+}
+
+a {
+  cursor: pointer !important;
+}
+
+
+.admin-login-logo {
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+.admin-login-page {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+
+  & h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  & input[type="text"],
+  & input[type="password"] {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
+    color: var(--main-text-color);
+  }
+
+  & button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-hover-background-color);
+    }
+  }
+}
+
+.admin-error-message {
+  color: red;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.admin-register-link, .admin-login-link {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+
+  & a {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+}
+
+.admin-register-page {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+
+  & h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  & input[type="text"],
+  & input[type="password"],
+  & input[type="email"] {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
+    color: var(--main-text-color);
+  }
+
+  & button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-hover-background-color);
+    }
+  }
+}
+
+.admin-dashboard-page {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+
+  & h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & .admin-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+
+    & .stat {
+      text-align: center;
+
+      & .number {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      & .label {
+        font-size: 1em;
+        color: var(--main-text-color);
+      }
+    }
+  }
+
+  & .admin-actions {
+    display: flex;
+    justify-content: space-around;
+
+    & button {
+      padding: 10px 20px;
+      background-color: var(--button-background-color);
+      color: var(--button-text-color);
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--button-hover-background-color);
+      }
+    }
+  }
+}
+
+.dashboard-content {
+  margin-top: 20px;
+
+  & ul {
+    list-style-type: none;
+    padding: 0;
+
+    & li {
+      padding: 5px 0px;
+
+      & a {
+        color: var(--link-color);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.admin-create-blog-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+
+  & h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  & input[type="text"],
+  & textarea {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
+    color: var(--main-text-color);
+  }
+
+  & button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-hover-background-color);
+    }
+  }
+}
+
+
+
+.create-page-button, .create-post-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 15px;
+
+  & a {
+    color: var(--button-text-color);
+    text-decoration: none;
+    justify-content: center;
+    display: flex;
+  }
+
+  &:hover {
+    background-color: var(--button-hover-background-color);
+  }
+}
+
+.admin-create-post-page, .admin-create-page-form, .admin-edit-post-page, .admin-edit-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+
+  & h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  & input[type="text"],
+  & textarea {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
+    color: var(--main-text-color);
+  }
+
+  & button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-hover-background-color);
+    }
+  }
+}
+
+.admin-settings-page {
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+
+  & label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  & input[type="text"],
+  & input[type="email"],
+  & textarea {
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
+    color: var(--main-text-color);
+  }
+
+  & select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--main-text-color);
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: var(--input-background-color);
+    color: var(--main-text-color);
+  }
+
+  & button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-hover-background-color);
+    }
+  }
+
+
+}

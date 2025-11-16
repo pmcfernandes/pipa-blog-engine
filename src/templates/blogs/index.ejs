@@ -1,0 +1,15 @@
+ <%- include('./partials/header') %>
+
+    <ul>
+        <% posts.forEach(function(post) { %>
+            <li>
+                <time><%= post.createdAt %></time> <a href="/posts/<%= post.slug %>"><%= post.title %></a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <div class="site-meta">
+      <p><a href="/rss" target="_blank"><i class="lni lni-rss-right"></i> Subscribe via RSS</a></p>
+    </div>
+
+ <%- include('./partials/footer') %>

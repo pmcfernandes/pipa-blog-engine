@@ -1,0 +1,53 @@
+<%- include('./partials/header') %>
+
+    <script type="text/javascript">
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('dashboardPage', () => ({
+                username: '',
+                currentTab: 'settings',
+
+                init() {
+
+                },
+
+                setTab(tabName) {
+                    this.currentTab = tabName;
+                },
+
+                logout() {
+                    window.location.href = '/admin/login';
+                }
+            }))
+        });
+    </script>
+
+    <main class="admin-dashboard-page" x-data="dashboardPage" x-init="init()">
+      <h2>Admin Dashboard</h2>
+      <div class="dashboard-content">
+          <p>Welcome, <%= username %>!
+            <div class="logout-section">
+              <button @click="logout">Logout</button>
+            </div>
+          </p>
+          <ul>
+              <li><a x-href="javascript://" @click="setTab('posts')">Manage Posts</a></li>
+              <li><a x-href="javascript://" @click="setTab('pages')">Manage Pages</a></li>
+              <li><a x-href="javascript://" @click="setTab('settings')">Site Settings</a></li>
+          </ul>
+
+          <div id="manage-settings-section" x-show="currentTab === 'settings'">
+            <%- include('./dashboard/blog-settings', { blogId }) %>
+          </div>
+
+          <div id="manage-posts-section" x-show="currentTab === 'posts'">
+            <%- include('./dashboard/manage-posts', { blogId }) %>
+          </div>
+
+          <div id="manage-pages-section" x-show="currentTab === 'pages'">
+            <%- include('./dashboard/manage-pages', { blogId }) %>
+          </div>
+
+      </div>
+    </main>
+
+ <%- include('./partials/footer') %>

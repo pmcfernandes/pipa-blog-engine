@@ -1,0 +1,17 @@
+ <%- include('./partials/header') %>
+
+    <h2><%= post.title %></h2>
+    <div class="post-content">
+        <%- post.content %>
+    </div>
+
+    <div class="post-meta">
+      <p><em><i class="lni lni-alarm-1"></i> Published on <%= post.createdAt %></em></p>
+      <% if (replyToEmail) { %>
+      <p><a href="mailto:<%= replyToEmail %>?subject=<%= encodeURIComponent(post.title) %>"><i class="lni lni-envelope-1"></i> Reply by email</p>
+       <% } %>
+      <p><a href="/rss" target="_blank"><i class="lni lni-rss-right"></i> Subscribe via RSS</a></p>
+      <p><a href="/"><i class="lni lni-shift-left"></i> Back to all blog posts</a></p>
+    </div>
+
+ <%- include('./partials/footer') %>

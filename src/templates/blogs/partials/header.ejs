@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title><%= blogTitle %></title>
+    <link rel="stylesheet" href="/static/css/icons.css" />
+    <link rel="stylesheet" href="/static/css/<%= theme %>.css" />
+    <%- customCSS %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <% if (avatarURL) { %>
+        <div class="blog-avatar">
+          <img src="/static/avatars/<%= avatarURL %>" alt="<%= blogTitle %>" />
+        </div>
+        <% } %>
+        <div>
+          <h1><a href="/"><%= blogTitle %></a></h1>
+          <%- include('menu.ejs') %>
+        </div>
+      </header>
+
+      <main>
+        <hr size="2" />
+        <% if (blogDescription) { %>
+        <p><%= blogDescription %></p>
+        <% } %>

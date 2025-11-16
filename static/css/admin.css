@@ -1,0 +1,349 @@
+:root {
+  --main-text-color: #333333;
+  --background-color: #f9f9f9;
+  --input-background-color: #ffffff;
+  --button-background-color: #4CAF50;
+  --button-text-color: #ffffff;
+  --button-hover-background-color: #45a049;
+}
+a {
+  cursor: pointer !important;
+}
+.admin-login-logo {
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+.admin-login-page {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+}
+.admin-login-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-login-page label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.admin-login-page input[type="text"],
+.admin-login-page input[type="password"] {
+  width: 94%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--main-text-color);
+}
+.admin-login-page button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-login-page button:hover {
+  background-color: var(--button-hover-background-color);
+}
+.admin-error-message {
+  color: red;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.admin-register-link,
+.admin-login-link {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+}
+.admin-register-link a,
+.admin-login-link a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+.admin-register-page {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+}
+.admin-register-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-register-page label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.admin-register-page input[type="text"],
+.admin-register-page input[type="password"],
+.admin-register-page input[type="email"] {
+  width: 94%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--main-text-color);
+}
+.admin-register-page button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-register-page button:hover {
+  background-color: var(--button-hover-background-color);
+}
+.admin-dashboard-page {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+}
+.admin-dashboard-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-dashboard-page .admin-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+.admin-dashboard-page .admin-stats .stat {
+  text-align: center;
+}
+.admin-dashboard-page .admin-stats .stat .number {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.admin-dashboard-page .admin-stats .stat .label {
+  font-size: 1em;
+  color: var(--main-text-color);
+}
+.admin-dashboard-page .admin-actions {
+  display: flex;
+  justify-content: space-around;
+}
+.admin-dashboard-page .admin-actions button {
+  padding: 10px 20px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-dashboard-page .admin-actions button:hover {
+  background-color: var(--button-hover-background-color);
+}
+.dashboard-content {
+  margin-top: 20px;
+}
+.dashboard-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+.dashboard-content ul li {
+  padding: 5px 0px;
+}
+.dashboard-content ul li a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+.admin-create-blog-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+}
+.admin-create-blog-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-create-blog-page label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.admin-create-blog-page input[type="text"],
+.admin-create-blog-page textarea {
+  width: 94%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--main-text-color);
+}
+.admin-create-blog-page button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-create-blog-page button:hover {
+  background-color: var(--button-hover-background-color);
+}
+.create-page-button,
+.create-post-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.create-page-button a,
+.create-post-button a {
+  color: var(--button-text-color);
+  text-decoration: none;
+  justify-content: center;
+  display: flex;
+}
+.create-page-button:hover,
+.create-post-button:hover {
+  background-color: var(--button-hover-background-color);
+}
+.admin-create-post-page,
+.admin-create-page-form,
+.admin-edit-post-page,
+.admin-edit-page {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+}
+.admin-create-post-page h1,
+.admin-create-page-form h1,
+.admin-edit-post-page h1,
+.admin-edit-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.admin-create-post-page label,
+.admin-create-page-form label,
+.admin-edit-post-page label,
+.admin-edit-page label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.admin-create-post-page input[type="text"],
+.admin-create-page-form input[type="text"],
+.admin-edit-post-page input[type="text"],
+.admin-edit-page input[type="text"],
+.admin-create-post-page textarea,
+.admin-create-page-form textarea,
+.admin-edit-post-page textarea,
+.admin-edit-page textarea {
+  width: 94%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--main-text-color);
+}
+.admin-create-post-page button,
+.admin-create-page-form button,
+.admin-edit-post-page button,
+.admin-edit-page button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-create-post-page button:hover,
+.admin-create-page-form button:hover,
+.admin-edit-post-page button:hover,
+.admin-edit-page button:hover {
+  background-color: var(--button-hover-background-color);
+}
+.admin-settings-page {
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+.admin-settings-page label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.admin-settings-page input[type="text"],
+.admin-settings-page input[type="email"],
+.admin-settings-page textarea {
+  width: 97%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--main-text-color);
+}
+.admin-settings-page select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--main-text-color);
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: var(--input-background-color);
+  color: var(--main-text-color);
+}
+.admin-settings-page button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-settings-page button:hover {
+  background-color: var(--button-hover-background-color);
+}

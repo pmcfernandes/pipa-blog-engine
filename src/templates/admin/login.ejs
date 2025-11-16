@@ -1,0 +1,50 @@
+<%- include ('./partials/header') %>
+
+    <script type="text/javascript">
+
+          document.addEventListener('alpine:init', () => {
+              Alpine.data('loginForm', () => ({
+                username: '',
+                password: '',
+                errorMessage: '<%= errorMessage %>',
+
+                submitForm($el) {
+                    if (this.username === '' || this.password === '') {
+                        this.errorMessage = 'Username and Password are required.';
+                        return;
+                    }
+
+                    $el.target.submit();
+                }
+
+              }))
+          });
+
+    </script>
+
+    <main class="admin-login-page" x-data="loginForm">
+      <img src="/static/images/pipas-1.png" alt="Logo" class="admin-login-logo" />
+      <h2>Login</h2>
+
+      <form action="/admin/login" method="POST" @submit.prevent="submitForm">
+          <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+            <%= errorMessage %>
+          </div>
+
+          <div>
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" x-model="username" />
+          </div>
+          <div>
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" x-model="password" />
+          </div>
+          <div>
+              <button type="submit">Login</button>
+              <a href="/admin/register" class="admin-register-link">Register</a>
+          </div>
+      </form>
+
+    </main>
+
+<%- include ('./partials/footer.ejs') %>

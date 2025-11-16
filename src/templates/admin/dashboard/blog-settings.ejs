@@ -1,0 +1,193 @@
+    <script type="text/javascript">
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('blogSettingsForm', () => ({
+                title: '',
+                description: '',
+                subdomain: '',
+                timezone: 'UTC',
+                dateformat: 'MM/DD/YYYY',
+                sitefooter: '',
+                theme: 'default',
+                fontfamily: 'Arial, sans-serif',
+                usecustomcss: false,
+                customcss: '',
+                replytoemail: '',
+                errorMessage: '<%= errorMessage %>',
+
+                init() {
+                    fetch('/api/blogs/<%= blogId %>', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                        }
+                      }).then(response => response.json()).then(data => {
+                        console.log(data);
+                        this.title = data.title || '';
+                        this.description = data.description || '';
+                        this.subdomain = data.subDomain || '';
+                        this.timezone = data.timeZone || 'UTC';
+                        this.dateformat = data.dateFormat || 'MM/DD/YYYY';
+                        this.sitefooter = data.siteFooter || '';
+                        this.theme = data.theme || 'default';
+                        this.fontfamily = data.fontFamily || 'Arial, sans-serif';
+                        this.usecustomcss = data.useCustomCSS || false;
+                        this.customcss = data.customCSS || '';
+                        this.replytoemail = data.replyToEmail || '';
+                      }).catch(error => {
+                        this.errorMessage = 'An error occurred while fetching blog settings.';
+                      });
+                },
+
+                submitForm() {
+                    if (this.title === '' || this.subdomain === '') {
+                        this.errorMessage = 'Title is required.';
+                        return;
+                    }
+
+                    fetch(`/api/blogs/<%= blogId %>`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                        },
+                        body: JSON.stringify({
+                            title: this.title,
+                            description: this.description || '',
+                            subDomain: this.subdomain,
+                            timeZone: this.timezone,
+                            dateFormat: this.dateformat,
+                            siteFooter: this.sitefooter || '',
+                            theme: this.theme || 'default',
+                            fontFamily: this.fontfamily,
+                            useCustomCSS: this.usecustomcss,
+                            customCSS: this.customcss || '',
+                            replyToEmail: this.replytoemail || ''
+                        })
+                      }).then(response => response.json()).then(data => {
+                        alert('Blog settings updated successfully.');
+                      }).catch(error => {
+                        this.errorMessage = 'An error occurred while updating blog settings.';
+                      });
+                }
+
+            }))
+        });
+
+    </script>
+
+    <div class="admin-settings-page" x-data="blogSettingsForm" x-init="init()">
+      <h2>Blog Settings</h2>
+
+      <form action="/admin/blog-settings" method="POST" @submit.prevent="submitForm">
+          <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+            <%= errorMessage %>
+          </div>
+
+          <div>
+              <label for="title">Blog Title:</label>
+              <input type="text" id="title" name="title" x-model="title" />
+          </div>
+
+          <div>
+            <label for="description">Blog Description</label>
+            <textarea id="description" name="description" x-model="description"></textarea>
+          </div>
+
+          <div>
+            <label for="subdomain">Sub domain</label>
+            <input type="text" id="subdomain" name="subdomain" x-model="subdomain" />
+            <small>Note: Changing the subdomain will affect the blog's URL.</small>
+          </div>
+
+          <div>
+            <label for="timezone">Timezone</label>
+            <select id="timezone" name="timezone" x-model="timezone">
+                <option value="Pacific/Midway">Pacific/Midway (UTC-11:00)</option>
+                <option value="Pacific/Honolulu">Pacific/Honolulu (UTC-10:00)</option>
+                <option value="America/Anchorage">America/Anchorage (UTC-09:00)</option>
+                <option value="America/Los_Angeles">America/Los_Angeles (<UT></UT>C-08:00)</option>
+                <option value="America/Denver">America/Denver (UTC-07:00)</option>
+                <option value="America/Chicago">America/Chicago (UTC-06:00)</option>
+                <option value="America/New_York">America/New_York (UTC-05:00)</option>
+                <option value="America/Caracas">America/Caracas (UTC-04:00)</option>
+                <option value="America/Sao_Paulo">America/Sao_Paulo (UTC-03:00)</option>
+                <option value="Atlantic/South_Georgia">Atlantic/South_Georgia (UTC-02:00)</option>
+                <option value="Atlantic/Azores">Atlantic/Azores (UTC-01:00)</option>
+                <option value="UTC">UTC (UTC+00:00)</option>
+                <option value="Europe/London">Europe/London (UTC+00:00)</option>
+                <option value="Europe/Paris">Europe/Paris (UTC+01:00)</option>
+                <option value="Europe/Athens">Europe/Athens (UTC+02:00)</option>
+                <option value="Asia/Dubai">Asia/Dubai (UTC+04:00)</option>
+                <option value="Asia/Karachi">Asia/Karachi (UTC+05:00)</option>
+                <option value="Asia/Dhaka">Asia/Dhaka (UTC+06:00)</option>
+                <option value="Asia/Bangkok">Asia/Bangkok (UTC+07:00)</option>
+                <option value="Asia/Shanghai">Asia/Shanghai (UTC+08:00)</option>
+                <option value="Asia/Tokyo">Asia/Tokyo (UTC+09:00)</option>
+                <option value="Australia/Sydney">Australia/Sydney (UTC+10:00)</option>
+                <option value="Pacific/Auckland">Pacific/Auckland (UTC+12:00)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="dateformat">Date Format</label>
+            <select id="dateformat" name="dateformat" x-model="dateformat">
+              <option value="MM/dd/yyyy">MM/dd/yyyy</option>
+              <option value="dd/MM/yyyy">dd/MM/yyyy</option>
+              <option value="yyyy-MM-dd">yyyy-MM-dd</option>
+              <option value="MMM dd">MMM dd</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="sitefooter">Site Footer</label>
+            <textarea id="sitefooter" name="sitefooter" x-model="sitefooter"></textarea>
+          </div>
+
+          <div>
+            <label for="theme">Theme</label>
+            <select id="theme" name="theme" x-model="theme">
+              <option value="default">Default</option>
+              <option value="beach">Beach</option>
+              <option value="custom-light">Custom Light</option>
+              <option value="gameboy">Gameboy</option>
+              <option value="grayscale">Grayscale</option>
+              <option value="halloween">Halloween</option>
+              <option value="notepad">Notepad</option>
+              <option value="sonnet">Sonnet</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="fontfamily">Font Family</label>
+            <select id="fontfamily" name="fontfamily" x-model="fontfamily">
+              <option value="Arial, sans-serif">Arial, sans-serif</option>
+              <option value="'Times New Roman', serif">'Times New Roman', serif</option>
+              <option value="'Courier New', monospace">'Courier New', monospace</option>
+              <option value="'Georgia', serif">'Georgia', serif</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="usecustomcss">
+              <input type="checkbox" id="usecustomcss" name="usecustomcss" x-model="usecustomcss" />
+              Use Custom CSS
+            </label>
+          </div>
+
+          <div>
+            <label for="customcss">Custom CSS</label>
+            <textarea id="customcss" name="customcss"></textarea>
+          </div>
+
+          <div>
+            <label for="replytoemail">Reply-To Email</label>
+            <input type="email" id="replytoemail" name="replytoemail" x-model="replytoemail" />
+          </div>
+
+          <div>
+            <button type="submit">Save Settings</button>
+          </div>
+      </form>
+    </div>

@@ -1,0 +1,73 @@
+<%- include('./partials/header') %>
+
+  <script type="text/javascript">
+
+      document.addEventListener('alpine:init', () => {
+          Alpine.data('createPageForm', () => ({
+              blogId: parseInt(''),
+              title: '',
+              body: '',
+              errorMessage: '<%= errorMessage %>',
+
+              inti() {
+
+              },
+
+              initQuill() {
+                  this.quill = new Quill(this.$refs.quillEditor, { theme: 'snow' });
+                  this.quill.on('text-change', () => {
+                    this.body = this.quill.root.innerHTML;
+                  });
+              },
+
+              submitForm($ev) {
+                  if (this.title === '') {
+                      alert('Title is required.');
+                      return;
+                  }
+
+                  fetch($ev.target.getAttribute('action'), {
+                      method: $ev.target.getAttribute('method'),
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                      },
+                      body: JSON.stringify({
+                          title: this.title,
+                          body: this.body || ''
+                      })
+                  }).then(response => response.json()).then(data => {
+                      window.location.href = '/admin/dashboard';
+                  }).catch(error => {
+                      this.errorMessage = 'An error occurred. Please try again later.';
+                  });
+              }
+          }))
+      });
+  </script>
+
+  <div class="admin-create-page-form" x-data="createPageForm" x-init="init()" >
+    <h2>Create New Page</h2>
+
+    <form id="create-page-form" action="/api/blogs/<%= blogId %>/pages" method="POST" @submit.prevent="submitForm">
+      <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+          <%= errorMessage %>
+        </div>
+
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" x-model="title" required />
+      </div>
+
+      <div>
+        <label for="body">Body:</label>
+        <textarea id="body" name="body" x-model="body" hidden></textarea>
+        <div id="editor" x-ref="quillEditor" x-init="initQuill()"></div>
+      </div>
+
+      <button type="submit">Create Page</button>
+    </form>
+
+  </div>
+
+<%- include('./partials/footer') %>

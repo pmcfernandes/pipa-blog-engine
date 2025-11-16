@@ -1,0 +1,84 @@
+<%- include('./partials/header') %>
+
+    <script type="text/javascript">
+
+          document.addEventListener('alpine:init', () => {
+              Alpine.data('registerForm', () => ({
+                  email: '',
+                  username: '',
+                  password: '',
+                  confirmPassword: '',
+                  errorMessage: '<%= errorMessage %>',
+
+                  init() {
+
+                  },
+
+                  submitForm($ev) {
+                      if (this.email === '' || this.username === '' || this.password === '' || this.confirmPassword === '') {
+                          this.errorMessage = 'All fields are required.';
+                          return;
+                      }
+
+                      if (this.password !== this.confirmPassword) {
+                          this.errorMessage = 'Passwords do not match.';
+                          return;
+                      }
+
+                      fetch($ev.target.getAttribute('action'), {
+                          method: $ev.target.getAttribute('method'),
+                          headers: {
+                              'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify({
+                              email: this.email,
+                              username: this.username,
+                              password: this.password
+                          })
+                        }).then(response => response.json()).then(data => {
+                          window.location.href = '/admin/login';
+                        }).catch(error => {
+                          this.errorMessage = 'An error occurred. Please try again later.';
+                        });
+                  }
+              }))
+          });
+
+    </script>
+
+    <div class="admin-register-page" x-data="registerForm" x-init="init()" >
+        <img src="/static/images/pipas-1.png" alt="Logo" class="admin-login-logo" />
+        <h2>Register</h2>
+
+        <form action="/api/register" method="POST" @submit.prevent="submitForm">
+            <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+              <%= errorMessage %>
+            </div>
+
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" x-model="email" />
+            </div>
+
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" x-model="username" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" x-model="password" />
+            </div>
+
+            <div>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" x-model="confirmPassword" />
+            </div>
+
+            <div>
+                <button type="submit">Register</button>
+                <a href="/admin/login" class="admin-login-link">Login</a>
+            </div>
+        </form>
+    </div>
+
+<%- include('./partials/footer') %>

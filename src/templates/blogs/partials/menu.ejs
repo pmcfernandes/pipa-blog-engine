@@ -1,0 +1,8 @@
+  <nav>
+    <ul>
+      <li><a href="/">Blog</a></li>
+      <% navigationItems.forEach(function(item) { %>
+        <li><a href="<%= item.url %>"><%= item.label %></a></li>
+      <% }); %>
+    </ul>
+  </nav>

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+#wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+  .blog-avatar {
+    float: left;
+    margin-right: 15px;
+
+    & img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-top: 10px;
+    }
+  }
+
+  & h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+
+    & a {
+      font-size: 27px;
+      color: var(--main-text-color);
+      text-decoration: none;
+    }
+  }
+}
+
+nav {
+  margin-bottom: 15px;
+
+  & ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    & > li {
+      display: inline;
+      margin-right: 15px;
+
+      & a {
+        color: var(--link-color);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+main {
+    color: var(--main-text-color);
+    line-height: 1.6;
+
+   & ul {
+      list-style-type: none;
+      margin-left: 0px;
+      padding: 0;
+      margin-bottom: 20px;
+
+      & li {
+        font-size: 18px;
+
+        & time {
+          color: var(--main-text-color);
+          margin-right: 10px;
+        }
+      }
+    }
+
+    & h2 {
+      font-size: 2em;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    & p {
+      font-size: 18px;
+       margin-bottom: 15px;
+    }
+
+    & a {
+      color: var(--link-color);
+      text-decoration: underline;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background-color: var(--main-text-color);
+      margin: 20px 0;
+    }
+
+    & .post-content, & .page-content {
+      margin-bottom: 20px;
+    }
+
+    & .site-meta, & .post-meta, & .page-meta {
+      font-size: 14px;
+      color: var(--main-text-color);
+      margin-bottom: 20px;
+
+      & p {
+        margin: 0;
+
+        & > a {
+          font-size: 14px;
+          color: var(--link-color);
+          text-decoration: underline;
+
+          & .lni {
+            float: left;
+            margin-top: 8px;
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+}
+
+
+footer {
+  font-size: 18px;
+  color: var(--main-text-color);
+}

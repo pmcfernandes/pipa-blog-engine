@@ -1,0 +1,87 @@
+<%- include('partials/header') %>
+
+  <script type="text/javascript">
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('editPage', () => ({
+              title: '',
+              body: '',
+              errorMessage: '<%= errorMessage %>',
+
+              init() {
+                  fetch(`/api/blogs/<%= blogId %>/pages/<%= pageId %>`, {
+                      method: 'GET',
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                      }
+                    }).then(response => response.json()).then(data => {
+                        this.title = data.title || '';
+                        this.body  = data.body || '';
+
+                        if (this.quill) {
+                            this.quill.root.innerHTML = this.body || '';
+                        }
+                    })
+                    .catch(err => {
+                        this.errorMessage = 'Failed to load post data.';
+                    });
+              },
+
+              initQuill() {
+                  this.quill = new Quill(this.$refs.quillEditor, { theme: 'snow' });
+                  this.quill.on('text-change', () => {
+                    this.body = this.quill.root.innerHTML;
+                  });
+              },
+
+              submitForm($ev) {
+                  if (this.title === '' || this.content === '') {
+                      this.errorMessage = 'Title and Content are required.';
+                      return;
+                  }
+
+                  fetch($ev.target.getAttribute('action'), {
+                      method: $ev.target.getAttribute('method'),
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                      },
+                      body: JSON.stringify({
+                          title: this.title,
+                          body: this.body || ''
+                      })
+                  }).then(response => response.json()).then(data => {
+                      window.location.href = '/admin/dashboard';
+                  }).catch(error => {
+                      this.errorMessage = 'An error occurred while updating the post.';
+                  });
+              }
+            }))
+        });
+  </script>
+
+  <div class="admin-edit-page" x-data="editPage" x-init="init()" >
+    <h2>Edit Post</h2>
+
+    <form id="edit-page-form" action="/api/blogs/<%= blogId %>/pages/<%= pageId %>" method="PUT" @submit.prevent="submitForm">
+      <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+        <%= errorMessage %>
+      </div>
+
+      <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" x-model="title" />
+      </div>
+
+      <div>
+        <label for="body">Body</label>
+        <textarea id="body" name="body" x-model="body" hidden></textarea>
+        <div id="editor" x-ref="quillEditor" x-init="initQuill()"></div>
+      </div>
+
+      <div>
+        <button type="submit">Update Page</button>
+      </div>
+  </div>
+
+<%- include('partials/footer') %>

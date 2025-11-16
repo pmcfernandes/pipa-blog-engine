@@ -1,0 +1,65 @@
+    <script type="text/javascript">
+
+      document.addEventListener('alpine:init', () => {
+          Alpine.data('managePages', () => ({
+              pages: [],
+              errorMessage: '',
+
+              init() {
+                  fetch('/api/blogs/<%= blogId %>/pages', {
+                      method: 'GET',
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                      }
+                    }).then(response => response.json()).then(data => {
+                      this.pages = data.pages || [];
+                    }).catch(error => {
+                      this.errorMessage = 'An error occurred while fetching pages.';
+                    });
+              },
+
+              deletePage(pageId) {
+                if (!confirm('Are you sure you want to delete this page?'))
+                  return;
+
+                fetch(`/api/blogs/<%= blogId %>/pages/${pageId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + getCookie('admin_jwt_token') }
+                }).then(() => {
+                    this.pages = this.pages.filter(page => page.id !== pageId);
+                }).catch(() => {
+                    this.errorMessage = 'An error occurred while deleting the page.';
+                });
+              }
+          }))
+      });
+
+  </script>
+
+  <div class="admin-manage-pages-page" x-data="managePages" x-init="init()">
+    <h2>Manage Pages</h2>
+
+    <div class="admin-error-message" x-show="errorMessage" x-text="errorMessage">
+      <%= errorMessage %>
+    </div>
+
+    <div class="create-page-button">
+        <a :href="'/admin/blog/<%= blogId %>/create-page'">Create New Page</a>
+    </div>
+
+    <div class="pages-list">
+      <div x-show="pages.length === 0">No pages available.</div>
+
+      <ul>
+        <template x-for="page in pages" :key="page.id">
+            <li>
+                <a x-href="javascript://" @click="deletePage(page.id)">Delete</a> |
+                <a :href="'/admin/blog/<%= blogId %>/edit-page/' + page.id">Edit</a>
+                <span x-text="new Date(page.createdAt).toDateString()"></span> - <span x-text="page.title"></span>
+            </li>
+        </template>
+      </ul>
+
+  </div>
+
