@@ -17,20 +17,25 @@ class NavigationController {
   static init(app) {
     const api = app.basePath('/api')
 
-    api.get('/blogs/:blogId/navigations/:id'
+    api.get('/blogs/:blogId/navigations/:navigationId'
       , jwt({ secret: HASH_SECRET })
       , BlogUserValidatorMiddleware.handle
       , this.getNavigationHandler)
 
-    api.put('/blogs/:blogId/navigations/:id'
+    api.put('/blogs/:blogId/navigations/:navigationId'
       , jwt({ secret: HASH_SECRET })
       , BlogUserValidatorMiddleware.handle
       , zValidator('json', schema)
       , this.updateNavigationHandler)
+
+    api.put('/blogs/:blogId/navigations/:navigationId/items'
+      , jwt({ secret: HASH_SECRET })
+      , BlogUserValidatorMiddleware.handle
+      , this.updateNavigationItemsHandler)
   }
 
   static async getNavigationHandler(c) {
-    const { blogId, navigationId: id } = c.req.param();
+    const { blogId, navigationId } = c.req.param();
     const navigation = await Navigation.findByPk(navigationId);
     if (!navigation) {
       return c.json({ error: 'Navigation not found' }, 404);
@@ -40,15 +45,16 @@ class NavigationController {
       return c.json({ error: 'Navigation does not belong to the specified blog' }, 400);
     }
 
-    const _items = navigation?.items ? navigation?.items.split(',').map((item => parseInt(item))) : [];
+    const _items = (navigation.items || '').split(',').map(item => parseInt(item))
     return c.json({
-      ...navigation,
+      id: navigation.id,
+      name: navigation.name,
       items: _items
     }, 200);
   }
 
   static async updateNavigationHandler(c) {
-    const { blogId, navigationId: id } = c.req.param();
+    const { blogId, navigationId } = c.req.param();
     const updates = c.req.valid('json');
 
     try {
@@ -70,6 +76,32 @@ class NavigationController {
     } catch (error) {
       return c.json({
         error: 'Navigation update failed',
+        details: error.message
+      }, 400)
+    }
+  }
+
+  static async updateNavigationItemsHandler(c) {
+    const { blogId, navigationId } = c.req.param();
+    const body = await c.req.json();
+    const itemIds = (Array.isArray(body.itemIds) ? body.itemIds : [body.itemIds])  || [];
+
+    const navigation = await Navigation.findByPk(navigationId);
+    if (!navigation) {
+      return c.json({ error: 'Navigation not found' }, 404);
+    }
+
+    if (navigation.blogId.toString() !== blogId) {
+      return c.json({ error: 'Navigation does not belong to the specified blog' }, 400);
+    }
+
+    const _items = itemIds.join(',');
+    try {
+      await navigation.update({ items: _items });
+      return c.json({ message: 'Navigation items updated successfully' }, 200);
+    } catch (error) {
+      return c.json({
+        error: 'Navigation items update failed',
         details: error.message
       }, 400)
     }

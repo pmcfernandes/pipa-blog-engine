@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import { verify } from 'hono/jwt'
 import { getCookie } from 'hono/cookie'
 import { renderTemplate } from '../helpers/template.js'
-import { User, Blog } from '../helpers/models.js'
+import { User, Blog, Navigation } from '../helpers/models.js'
 dotenv.config();
 
 const { HASH_SECRET } = process.env
@@ -30,9 +30,13 @@ class DashboardPage {
       return c.redirect('/admin/create-blog');
     }
 
+    const blog = blogs.map(blog => blog.id).shift();
+    const navigation = await Navigation.findOne({ where: { blogId: blog } });
+
     return c.html(renderTemplate('admin/dashboard', {
       username,
-      blogId: blogs.map(blog => blog.id).shift(),
+      blogId: blog,
+      navigationId: navigation.id,
       errorMessage: '',
     }));
   }

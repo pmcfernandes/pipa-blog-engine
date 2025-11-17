@@ -419,3 +419,46 @@ ul li {
 .admin-back-link:hover {
   text-decoration: none;
 }
+/* Dual-list drag & drop styles */
+.pages-list {
+  display: block;
+  margin-top: 10px;
+  /* Responsive adjustments */
+}
+.pages-list .dnd-container {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+.pages-list .dnd-list {
+  flex: 1 1 320px;
+  min-height: 160px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 5px;
+}
+.pages-list .dnd-list > li {
+  list-style: none;
+  padding: 5px;
+  margin-bottom: 0px;
+  cursor: grab;
+}
+.pages-list .dnd-list > li:active {
+  cursor: grabbing;
+}
+.pages-list .dnd-list > li.dragging {
+  opacity: 0.6;
+  transform: scale(0.995);
+}
+@media (max-width: 720px) {
+  .pages-list .dnd-container {
+    flex-direction: column;
+  }
+  .pages-list .dnd-list {
+    width: 100%;
+  }
+}

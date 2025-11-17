@@ -51,7 +51,19 @@ class PostController {
   static async listPostsHandler(c) {
     const blogId = c.req.param('blogId');
     const posts = await Post.findAll({ where: { blogId } });
-    return c.json({ posts }, 200);
+    const _posts = posts.map(post => ({
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      tags: post.tags,
+      status: post.status || 'draft',
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+    }));
+
+    return c.json({
+      posts: _posts
+    }, 200);
   }
 
   static async getPostHandler(c) {

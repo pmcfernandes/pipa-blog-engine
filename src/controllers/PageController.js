@@ -3,7 +3,7 @@ import { jwt } from 'hono/jwt'
 import * as z from 'zod'
 import BlogUserValidatorMiddleware from '../middlewares/BlogUserValidatorMiddleware.js'
 import { zValidator } from '@hono/zod-validator'
-import { Page } from '../helpers/models.js'
+import { Page, Navigation } from '../helpers/models.js'
 import { slugGenerator } from '../helpers/slugGenerator.js'
 dotenv.config();
 
@@ -48,8 +48,26 @@ class PageController {
 
   static async listPagesHandler(c) {
     const blogId = c.req.param('blogId');
+    const navigation = await Navigation.findOne({ where: { blogId } });
+    if (!navigation) {
+      return c.json({ error: 'Navigation not found for the specified blog' }, 404);
+    }
+
+    const navPageIds = (navigation.items || '').split(',').map(id => parseInt(id));
+
     const pages = await Page.findAll({ where: { blogId } });
-    return c.json({ pages }, 200);
+    const _pages = pages.map(page => ({
+      id: page.id,
+      slug: page.slug,
+      title: page.title,
+      isInNavigation: navPageIds.includes(page.id),
+      createdAt: page.createdAt,
+      updatedAt: page.updatedAt,
+    }));
+
+    return c.json({
+      pages: _pages
+    }, 200);
   }
 
   static async getPageHandler(c) {

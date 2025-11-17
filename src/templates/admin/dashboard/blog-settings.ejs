@@ -17,28 +17,32 @@
                 errorMessage: '<%= errorMessage %>',
 
                 init() {
-                    fetch('/api/blogs/<%= blogId %>', {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
-                        }
-                      }).then(response => response.json()).then(data => {
-                        this.title = data.title || '';
-                        this.description = data.description || '';
-                        this.subdomain = data.subDomain || '';
-                        this.avatarurl = data.avatarUrl || '';
-                        this.timezone = data.timeZone || 'UTC';
-                        this.dateformat = data.dateFormat || 'MM/DD/YYYY';
-                        this.sitefooter = data.siteFooter || '';
-                        this.theme = data.theme || 'default';
-                        this.fontfamily = data.fontFamily || 'Arial, sans-serif';
-                        this.usecustomcss = data.useCustomCSS || false;
-                        this.customcss = data.customCSS || '';
-                        this.replytoemail = data.replyToEmail || '';
-                      }).catch(error => {
-                        this.errorMessage = 'An error occurred while fetching blog settings.';
-                      });
+                  this.fetchSettings();
+                },
+
+                fetchSettings() {
+                  fetch('/api/blogs/<%= blogId %>', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                    }
+                  }).then(response => response.json()).then(data => {
+                    this.title = data.title || '';
+                    this.description = data.description || '';
+                    this.subdomain = data.subDomain || '';
+                    this.avatarurl = data.avatarUrl || '';
+                    this.timezone = data.timeZone || 'UTC';
+                    this.dateformat = data.dateFormat || 'MM/DD/YYYY';
+                    this.sitefooter = data.siteFooter || '';
+                    this.theme = data.theme || 'default';
+                    this.fontfamily = data.fontFamily || 'Arial, sans-serif';
+                    this.usecustomcss = data.useCustomCSS || false;
+                    this.customcss = data.customCSS || '';
+                    this.replytoemail = data.replyToEmail || '';
+                  }).catch(error => {
+                    this.errorMessage = 'An error occurred while fetching blog settings.';
+                  });
                 },
 
                 async submitForm() {
@@ -84,6 +88,7 @@
                         })
                       }).then(response => response.json()).then(data => {
                         alert('Blog settings updated successfully.');
+                        this.fetchSettings();
                       }).catch(error => {
                         this.errorMessage = 'An error occurred while updating blog settings.';
                       });

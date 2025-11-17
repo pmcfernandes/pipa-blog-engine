@@ -4,6 +4,8 @@
           Alpine.data('managePages', () => ({
               pages: [],
               errorMessage: '',
+              itemsA: [],
+              itemsB: [],
 
               init() {
                   fetch('/api/blogs/<%= blogId %>/pages', {
@@ -13,10 +15,49 @@
                           'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
                       }
                     }).then(response => response.json()).then(data => {
-                      this.pages = data.pages || [];
+                        this.pages = data.pages || [];
+                        this.rebuildLists();
                     }).catch(error => {
                       this.errorMessage = 'An error occurred while fetching pages.';
                     });
+              },
+
+              rebuildLists() {
+                const mappedA = this.pages
+                  .filter(page => page.isInNavigation)
+                  .map(page => ({
+                    ...page,
+                    id: page.id,
+                    label: page.title
+                  }));
+                this.itemsA.splice(0, this.itemsA.length, ...mappedA);
+
+                const mappedB = this.pages
+                  .filter(page => !page.isInNavigation)
+                  .map(page => ({
+                    ...page,
+                    id: page.id,
+                    label: page.title
+                  }));
+                this.itemsB.splice(0, this.itemsB.length, ...mappedB);
+              },
+
+              updateNavigationItems() {
+                const navItemsA = this.itemsA.map(item => item.id).join(',');
+                fetch(`/api/blogs/<%= blogId %>/navigations/<%= navigationId %>/items`, {
+                  method: 'PUT',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + getCookie('admin_jwt_token')
+                  },
+                  body: JSON.stringify({
+                    itemIds: navItemsA
+                  })
+                }).then(response => {
+                  if (!response.ok) throw new Error('Failed to update navigation items');
+                }).catch((err) => {
+                  this.errorMessage = 'An error occurred while updating navigation items.';
+                });
               },
 
               deletePage(pageId) {
@@ -28,6 +69,7 @@
                     headers: { 'Authorization': 'Bearer ' + getCookie('admin_jwt_token') }
                 }).then(() => {
                     this.pages = this.pages.filter(page => page.id !== pageId);
+                    this.rebuildLists();
                 }).catch(() => {
                     this.errorMessage = 'An error occurred while deleting the page.';
                 });
@@ -51,15 +93,40 @@
     <div class="pages-list">
       <div x-show="pages.length === 0">No pages available.</div>
 
-      <ul>
-        <template x-for="page in pages" :key="page.id">
-            <li>
-                <a x-href="javascript://" @click="deletePage(page.id)">Delete</a> |
-                <a :href="'/admin/blog/<%= blogId %>/edit-page/' + page.id">Edit</a>
-                <span x-text="new Date(page.createdAt).toDateString()"></span> - <span x-text="page.title"></span>
-            </li>
-        </template>
-      </ul>
+      <div x-data="dndLists({
+        listA: itemsA,
+        listB: itemsB,
+        idKey: 'id',
+        onChange: () => updateNavigationItems()
+      })">
+
+        <div>
+          <label>Nav menu</label>
+          <ul x-ref="a" class="dnd-list" @dragover.prevent="onDragOver($event,'A')" @drop.prevent="onDrop($event, 'A')">
+            <template x-for="(item, index) in listA" :key="item[idKey]">
+              <li draggable="true" :data-id="item[idKey]" @dragstart="onDragStart($event, 'A', index)" @dragend="onDragEnd()" @keydown.space.prevent="onKeyPick($event, 'A', index)" tabindex="0">
+                <a x-href="javascript://" @click="deletePage(item.id)">Delete</a> |
+                <a :href="'/admin/blog/<%= blogId %>/edit-page/' + item.id">Edit</a>
+                <span x-text="new Date(item.createdAt).toDateString()"></span> - <span x-text="item.title"></span>
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <div>
+          <label>Other pages</label>
+          <ul x-ref="b" class="dnd-list" @dragover.prevent="onDragOver($event,'B')" @drop.prevent="onDrop($event, 'B')">
+            <template x-for="(item, index) in listB" :key="item[idKey]">
+              <li draggable="true" :data-id="item[idKey]" @dragstart="onDragStart($event, 'B', index)" @dragend="onDragEnd()" @keydown.space.prevent="onKeyPick($event, 'B', index)" tabindex="0">
+                <a x-href="javascript://" @click="deletePage(item.id)">Delete</a> |
+                <a :href="'/admin/blog/<%= blogId %>/edit-page/' + item.id">Edit</a>
+                <span x-text="new Date(item.createdAt).toDateString()"></span> - <span x-text="item.title"></span>
+              </li>
+            </template>
+          </ul>
+        </div>
+
+      </div>
 
   </div>
 
