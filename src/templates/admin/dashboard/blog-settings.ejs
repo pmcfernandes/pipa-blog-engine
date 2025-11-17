@@ -20,6 +20,38 @@
                   this.fetchSettings();
                 },
 
+                intiDescriptionQuill() {
+                  this.quill1 = new Quill(this.$refs.descriptionEditor, {
+                    theme: 'snow',
+                    modules: {
+                      toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link']
+                      ]
+                    }
+                  });
+                  this.quill1.on('text-change', () => {
+                    this.description = this.quill1.root.innerHTML;
+                  });
+                },
+
+                intiSiteFooterQuill() {
+                  this.quill2 = new Quill(this.$refs.siteFooterEditor, {
+                    theme: 'snow',
+                    modules: {
+                      toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link']
+                      ]
+                    }
+                  });
+                  this.quill2.on('text-change', () => {
+                    this.sitefooter = this.quill2.root.innerHTML;
+                  });
+                },
+
                 fetchSettings() {
                   fetch('/api/blogs/<%= blogId %>', {
                     method: 'GET',
@@ -40,6 +72,10 @@
                     this.usecustomcss = data.useCustomCSS || false;
                     this.customcss = data.customCSS || '';
                     this.replytoemail = data.replyToEmail || '';
+
+                    if (this.quill1) this.quill1.root.innerHTML = this.description;
+                    if (this.quill2) this.quill2.root.innerHTML = this.sitefooter;
+
                   }).catch(error => {
                     this.errorMessage = 'An error occurred while fetching blog settings.';
                   });
@@ -114,7 +150,8 @@
 
           <div>
             <label for="description">Blog Description</label>
-            <textarea id="description" name="description" x-model="description"></textarea>
+            <textarea id="description" name="description" x-model="description" hidden></textarea>
+            <div id="descriptionEditor" x-ref="descriptionEditor" x-init="intiDescriptionQuill()"></div>
           </div>
 
           <div>
@@ -150,7 +187,7 @@
                 <option value="America/Sao_Paulo">America/Sao_Paulo (UTC-03:00)</option>
                 <option value="Atlantic/South_Georgia">Atlantic/South_Georgia (UTC-02:00)</option>
                 <option value="Atlantic/Azores">Atlantic/Azores (UTC-01:00)</option>
-                <option value="UTC">UTC (UTC+00:00)</option>
+                <option value="UTC">Lisbon (UTC+00:00)</option>
                 <option value="Europe/London">Europe/London (UTC+00:00)</option>
                 <option value="Europe/Paris">Europe/Paris (UTC+01:00)</option>
                 <option value="Europe/Athens">Europe/Athens (UTC+02:00)</option>
@@ -177,7 +214,8 @@
 
           <div>
             <label for="sitefooter">Site Footer</label>
-            <textarea id="sitefooter" name="sitefooter" x-model="sitefooter"></textarea>
+            <textarea id="sitefooter" name="sitefooter" x-model="sitefooter" hidden></textarea>
+            <div id="siteFooterEditor" x-ref="siteFooterEditor" x-init="intiSiteFooterQuill()"></div>
           </div>
 
           <div>

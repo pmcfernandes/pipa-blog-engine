@@ -30,12 +30,16 @@ class DashboardPage {
       return c.redirect('/admin/create-blog');
     }
 
-    const blog = blogs.map(blog => blog.id).shift();
-    const navigation = await Navigation.findOne({ where: { blogId: blog } });
+    const blog = blogs.map(blog => ({
+      id: blog.id,
+      subDomain: blog.subDomain
+    })).shift();
+    const navigation = await Navigation.findOne({ where: { blogId: blog.id } });
 
     return c.html(renderTemplate('admin/dashboard', {
       username,
-      blogId: blog,
+      blogId: blog.id,
+      subDomain: blog.subDomain,
       navigationId: navigation.id,
       errorMessage: '',
     }));

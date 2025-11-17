@@ -380,8 +380,30 @@ ul li {
   min-height: 800px;
   background-color: var(--background-color);
 }
+.admin-edit-page .admin-edit-page-content #editor h1,
+.admin-edit-page .admin-edit-page-content #editor h2,
+.admin-edit-page .admin-edit-page-content #editor h3,
+.admin-edit-page .admin-edit-page-content #editor p,
+.admin-edit-page .admin-edit-page-content #editor ul,
+.admin-edit-page .admin-edit-page-content #editor ol {
+  margin-bottom: 15px;
+}
+.admin-edit-page .admin-edit-page-content #editor h4,
+.admin-edit-page .admin-edit-page-content #editor h5,
+.admin-edit-page .admin-edit-page-content #editor h6 {
+  margin-bottom: 10px;
+}
 .admin-edit-page .admin-edit-page-content #editor .ql-editor {
   padding: 10px;
+}
+.ql-toolbar {
+  background-color: #ffffff !important;
+  margin-bottom: 0px !important;
+}
+#descriptionEditor,
+#siteFooterEditor {
+  background-color: #ffffff !important;
+  min-height: 200px;
 }
 .admin-login-page,
 .admin-register-page {

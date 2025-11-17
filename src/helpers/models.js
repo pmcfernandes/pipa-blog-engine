@@ -62,7 +62,7 @@ class Post extends Model {
         blogId: { type: DataTypes.INTEGER, allowNull: false },
         slug: { type: DataTypes.STRING, unique: true, allowNull: false },
         title: { type: DataTypes.STRING, allowNull: false },
-        content: { type: DataTypes.TEXT, allowNull: false },
+        content: { type: DataTypes.TEXT('long'), allowNull: false },
         tags: { type: DataTypes.STRING, allowNull: true },
         status: { type: DataTypes.ENUM('draft', 'published', 'archived'), defaultValue: 'draft' },
       },
@@ -84,7 +84,7 @@ class Page extends Model {
         blogId: { type: DataTypes.INTEGER, allowNull: false },
         slug: { type: DataTypes.STRING, unique: true, allowNull: false },
         title: { type: DataTypes.STRING, allowNull: false },
-        body: { type: DataTypes.TEXT, allowNull: false },
+        body: { type: DataTypes.TEXT('long'), allowNull: false },
       },
       {
         sequelize,

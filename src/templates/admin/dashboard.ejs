@@ -4,7 +4,7 @@
         document.addEventListener('alpine:init', () => {
             Alpine.data('dashboardPage', () => ({
                 username: '',
-                currentTab: 'pages',
+                currentTab: 'posts',
 
                 init() {
 
@@ -24,7 +24,7 @@
     <div x-data="dashboardPage" x-init="init()">
       <header>
         <div id="admin-welcome-message">
-          Welcome <%= username %>! See your blog <a href="/"" target="_blank">here</a>.
+          Welcome <%= username %>! See your blog <a href="//<%= subDomain %>" target="_blank">here</a>.
         </div>
         <h1>Pipa Blog Engine - Admin Panel</h1>
         <nav>

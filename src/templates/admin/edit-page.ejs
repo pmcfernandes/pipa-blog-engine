@@ -76,21 +76,7 @@
       </div>
     </div>
 
-    <div id="toolbar">
-      <span class="ql-formats">
-        <button class="ql-bold"></button>
-        <button class="ql-italic"></button>
-        <button class="ql-underline"></button>
-        <button class="ql-strike"></button>
-      </span>
-      <span class="ql-formats">
-        <button class="ql-list" value="ordered"></button>
-        <button class="ql-list" value="bullet"></button>
-      </span>
-      <span class="ql-formats">
-        <button class="ql-link"></button>
-      </span>
-    </div>
+    <%- include('partials/quill-toolbar') %>
 
     <div class="admin-edit-page-content" x-init="init()">
       <form id="edit-post-form" action="/api/blogs/<%= blogId %>/pages/<%= pageId %>" method="PUT" @submit.prevent="submitForm">

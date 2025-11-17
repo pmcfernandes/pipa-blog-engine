@@ -278,12 +278,31 @@ ul {
       min-height: 800px;
       background-color: var(--background-color);
 
+      & h1, & h2, & h3, & p, & ul, & ol {
+        margin-bottom: 15px;
+      }
+
+      & h4, & h5, & h6 {
+        margin-bottom: 10px;
+      }
+
       & .ql-editor {
         padding: 10px;
       }
     }
   }
 }
+
+.ql-toolbar {
+  background-color: #ffffff !important;
+  margin-bottom: 0px !important;
+ }
+
+#descriptionEditor, #siteFooterEditor {
+  background-color: #ffffff !important;
+  min-height: 200px;
+}
+
 
 .admin-login-page, .admin-register-page {
   max-width: 400px;
