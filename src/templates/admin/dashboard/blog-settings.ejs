@@ -15,6 +15,7 @@
                 customcss: '',
                 replytoemail: '',
                 errorMessage: '<%= errorMessage %>',
+                format: dateFns.format,
 
                 init() {
                   this.fetchSettings();
@@ -149,9 +150,9 @@
           </div>
 
           <div>
-            <label for="description">Blog Description</label>
-            <textarea id="description" name="description" x-model="description" hidden></textarea>
-            <div id="descriptionEditor" x-ref="descriptionEditor" x-init="intiDescriptionQuill()"></div>
+            <label for="subdomain">Sub domain</label>
+            <input type="text" id="subdomain" name="subdomain" x-model="subdomain" />
+            <small>Note: Changing the subdomain will affect the blog's URL.</small>
           </div>
 
           <div>
@@ -168,12 +169,6 @@
           </div>
 
           <div>
-            <label for="subdomain">Sub domain</label>
-            <input type="text" id="subdomain" name="subdomain" x-model="subdomain" />
-            <small>Note: Changing the subdomain will affect the blog's URL.</small>
-          </div>
-
-          <div>
             <label for="timezone">Timezone</label>
             <select id="timezone" name="timezone" x-model="timezone">
                 <option value="Pacific/Midway">Pacific/Midway (UTC-11:00)</option>
@@ -187,7 +182,7 @@
                 <option value="America/Sao_Paulo">America/Sao_Paulo (UTC-03:00)</option>
                 <option value="Atlantic/South_Georgia">Atlantic/South_Georgia (UTC-02:00)</option>
                 <option value="Atlantic/Azores">Atlantic/Azores (UTC-01:00)</option>
-                <option value="UTC">Lisbon (UTC+00:00)</option>
+                <option value="UTC">Europe/Lisbon (UTC+00:00)</option>
                 <option value="Europe/London">Europe/London (UTC+00:00)</option>
                 <option value="Europe/Paris">Europe/Paris (UTC+01:00)</option>
                 <option value="Europe/Athens">Europe/Athens (UTC+02:00)</option>
@@ -205,11 +200,18 @@
           <div>
             <label for="dateformat">Date Format</label>
             <select id="dateformat" name="dateformat" x-model="dateformat">
-              <option value="MM/dd/yyyy">MM/dd/yyyy</option>
-              <option value="dd/MM/yyyy">dd/MM/yyyy</option>
-              <option value="yyyy-MM-dd">yyyy-MM-dd</option>
-              <option value="MMM dd">MMM dd</option>
+              <option value="MMM dd" x-text="format(new Date(), 'MMM dd')"></option>
+              <option value="MMMM dd, yyyy" x-text="format(new Date(), 'MMMM dd, yyyy')"></option>
+              <option value="dd MMMM yyyy" x-text="format(new Date(), 'dd MMMM yyyy')"></option>
+              <option value="yyyy MMMM dd" x-text="format(new Date(), 'yyyy MMMM dd')"></option>
+              <option value="yyyy dd MMMM" x-text="format(new Date(), 'yyyy dd MMMM')"></option>
             </select>
+          </div>
+
+          <div>
+            <label for="description">About this blog</label>
+            <textarea id="description" name="description" x-model="description" hidden></textarea>
+            <div id="descriptionEditor" x-ref="descriptionEditor" x-init="intiDescriptionQuill()"></div>
           </div>
 
           <div>
@@ -235,10 +237,13 @@
           <div>
             <label for="fontfamily">Font Family</label>
             <select id="fontfamily" name="fontfamily" x-model="fontfamily">
-              <option value="Arial, sans-serif">Arial, sans-serif</option>
-              <option value="'Times New Roman', serif">'Times New Roman', serif</option>
-              <option value="'Courier New', monospace">'Courier New', monospace</option>
-              <option value="'Georgia', serif">'Georgia', serif</option>
+              <option value="'EB Garamond', serif">EB Garamond</option>
+              <option value="'Elms Sans', sans-serif">Elms Sans</option>
+              <option value="'IBM Plex Sans', sans-serif">IBM Plex Sans</option>
+              <option value="'Libre Franklin', sans-serif">Libre Franklin</option>
+              <option value="'Monospace', monospace">Monospace</option>
+              <option value="'Source Code Pro', monospace">Source Code Pro</option>
+              <option value="'Times New Roman', serif">Times New Roman</option>
             </select>
           </div>
 

@@ -7,6 +7,13 @@
     <title><%= blogTitle %></title>
     <link rel="stylesheet" href="/static/css/icons.css" />
     <link rel="stylesheet" href="/static/css/<%= theme %>.css" />
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+      body {
+        font-family: <%- fontFamily %>;
+      }
+    </style>
     <%- customCSS %>
   </head>
   <body>
