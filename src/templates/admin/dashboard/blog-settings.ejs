@@ -7,7 +7,7 @@
                 subdomain: '',
                 avatarurl: '',
                 timezone: 'UTC',
-                dateformat: 'MM/DD/YYYY',
+                dateformat: 'MMM dd',
                 sitefooter: '',
                 theme: 'default',
                 fontfamily: 'Arial, sans-serif',
@@ -66,7 +66,7 @@
                     this.subdomain = data.subDomain || '';
                     this.avatarurl = data.avatarUrl || '';
                     this.timezone = data.timeZone || 'UTC';
-                    this.dateformat = data.dateFormat || 'MM/DD/YYYY';
+                    this.dateformat = data.dateFormat || 'MMM dd';
                     this.sitefooter = data.siteFooter || '';
                     this.theme = data.theme || 'default';
                     this.fontfamily = data.fontFamily || 'Arial, sans-serif';
@@ -115,7 +115,7 @@
                             description: this.description || '',
                             subDomain: this.subdomain,
                             timeZone: this.timezone,
-                            dateFormat: this.dateformat,
+                            dateFormat: this.dateformat || 'MMM dd',
                             siteFooter: this.sitefooter || '',
                             theme: this.theme || 'default',
                             fontFamily: this.fontfamily,
@@ -252,7 +252,7 @@
               <input type="checkbox" id="usecustomcss" name="usecustomcss" x-model="usecustomcss" />
               Use Custom CSS
             </label>
-            <textarea id="customcss" name="customcss" rows="8"></textarea>
+            <textarea id="customcss" name="customcss" rows="8" x-model="customcss"></textarea>
           </div>
 
           <div>
