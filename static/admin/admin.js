@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector("#title").addEventListener('input', autoResize, false);
+  document.querySelector(".admin-edit-page #title").addEventListener('input', autoResize, false);
 
   function autoResize() {
     this.style.height = 'auto';
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Trigger the resize on page load in case there is pre-filled content
   setTimeout(function() {
-    var titleElement = document.querySelector("#title");
+    var titleElement = document.querySelector(".admin-edit-page #title");
     titleElement.style.height = 'auto';
     titleElement.style.height = titleElement.scrollHeight + 'px';
   }, 100);
